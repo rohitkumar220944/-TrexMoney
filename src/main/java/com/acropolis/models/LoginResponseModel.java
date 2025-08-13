@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
-public class ExpenseLimterModel {
-	private String title;
-	private String limits;
-	
-	
+public class LoginResponseModel {
+	private String name;
+	private  String role;
+	private  String token;
 
 }

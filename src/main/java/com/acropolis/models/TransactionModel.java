@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class TransactionModel {
 	private String title;
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate entrydate;
 	private String type;
 	private Float amount;

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.acropolis.configs.JWTUtils;
 import com.acropolis.entity.Users;
 import com.acropolis.models.LoginModel;
+import com.acropolis.models.LoginResponseModel;
 import com.acropolis.models.UserModel;
 import com.acropolis.services.UserService;
 import com.acropolis.util.APIResponse;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/money")
 public class MoneyController {
@@ -53,7 +55,8 @@ public class MoneyController {
 			 	Users ob=userv.checkLogin(model);
 			 	if(ob!=null) {
 			 	 String token=jwt.generateToken(ob.getEmail());
-			 	 resp=new APIResponse("Welcome to app", true,token);
+			 	 LoginResponseModel logmodel=new LoginResponseModel(ob.getName(),ob.getRole(),token);
+			 	 resp=new APIResponse("Welcome to app", true,logmodel);
 				 return ResponseEntity.ok(resp);
 			 	}
 			 	else {

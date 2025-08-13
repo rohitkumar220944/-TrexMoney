@@ -61,7 +61,19 @@ public class Transaction {
 			    this.description = model.getDescription();
 			    
 		}
+		
+		public void update(TransactionModel model) {
+			this.title=model.getTitle();
+			this.type=model.getType();
+			this.entrydate=model.getEntrydate();
+			this.amount=model.getAmount();
+			this.description=model.getDescription();
+			this.setUpdated(LocalDate.now());
+			
+		}
+		
 
+	
 		
 		
 		
